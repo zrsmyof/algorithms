@@ -21,11 +21,24 @@ public class SortingTest {
     }
 
     @ParameterizedTest
-    @MethodSource("bubbleSearchingArguments")
-    public void bubbleSearchingTest(int[] numbers, int[] expectedOutPut) {
+    @MethodSource("arraySortingArguments")
+    public void bubbleSortingTest(int[] numbers, int[] expectedOutPut) {
 
-        int[] result = Sorting.bubbleSorting(numbers);
-        assertArrayEquals(expectedOutPut, result);
+        assertArrayEquals(expectedOutPut, Sorting.bubbleSorting(numbers));
+    }
+
+    @ParameterizedTest
+    @MethodSource("arraySortingArguments")
+    public void selectionSortingTest(int[] numbers, int[] expectedOutPut) {
+
+        assertArrayEquals(expectedOutPut, Sorting.selectionSorting(numbers));
+    }
+
+    @ParameterizedTest
+    @MethodSource("arraySortingArguments")
+    public void quickSortingTest(int[] numbers, int[] expectedOutPut) {
+
+        assertArrayEquals(expectedOutPut, Sorting.quickSorting(numbers));
     }
 
     static Stream<Arguments> minArrayElementArguments() {
@@ -36,7 +49,7 @@ public class SortingTest {
         );
     }
 
-    static Stream<Arguments> bubbleSearchingArguments() {
+    static Stream<Arguments> arraySortingArguments() {
         return Stream.of(
                 arguments(new int[]{15, 2, 7, 11, 18, 9, 4, 3}, new int[]{2, 3, 4, 7, 9, 11, 15, 18}),
                 arguments(new int[]{3, 2, 4}, new int[]{2, 3, 4}),
